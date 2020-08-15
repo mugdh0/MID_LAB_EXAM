@@ -12,6 +12,16 @@ module.exports ={
 			}
 		});
 	},
+	gets: function(id, callback){
+		var sql = "select * from user where id=?";
+		db.getResults(sql, [id], function(result){
+			if(result.length > 0){
+				callback(result[0]);
+			}else{
+				callback([]);
+			}
+		});
+	},
 
 	getAll: function(callback){
 		var sql = "select * from user";

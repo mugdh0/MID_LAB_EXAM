@@ -42,4 +42,33 @@ router.post('/addemployee', function(req, res){
 	});
 
 });
+
+router.get('/delete/:id', function(req, res){
+
+	userModel.gets(req.params.id, function(result){
+		res.render('delete', {user: result});
+	});
+
+});
+
+router.post('/delete/:id', function(req, res){
+
+  if(req.body.submit == 'confirm'){
+
+    userModel.delete(req.body.id, function(status){
+  		if(status){
+  			res.redirect('/admin/allemployee');
+  		}else{
+  			res.redirect('/admin');
+  		}
+  	});
+
+  }else if(req.body.submit == 'no'){
+      res.redirect('/admin/allemployee');
+  }
+  else{
+  }
+
+});
+
 module.exports = router;
