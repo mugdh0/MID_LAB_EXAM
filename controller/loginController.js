@@ -20,11 +20,11 @@ router.post('/', function(req, res){
       console.log(user.id)
 		//	res.redirect('/admin');
     userModel.get(user.uname, function(result){
-				if (result.type == 'admin'){
-					res.redirect('/admin');
+				if (result.type == 'employee'){
+					res.redirect('/employee');
 				}
-				else if (result.type == 'employee'){
-          res.redirect('/employee');
+				else if(result.type == 'admin'){
+          res.redirect('/admin');
 				}
 			});
 
