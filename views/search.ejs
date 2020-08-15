@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>User List page</title>
+	<link rel="stylesheet" type="text/css" href="abc/style.css">
+
+</head>
+
+<body>
+
+	<a href="/admin">Back</a>|
+	<a href="/login/logout">Logout</a>
+
+	<h3>User List</h3>
+
+  <div>
+  <input type="text" class="search" id="search" onkeyup="search()" placeholder="Search using ID, Name ">
+  </div>
+
+	<table id="table" border="1">
+		<tr>
+			<th>Employee ID</th>
+			<th>USERNAME</th>
+			<th>PASSWORD</th>
+			<th>designation</th>
+			<th>gender</th>
+			<th>phone</th>
+		</tr>
+
+		<% for(var i=0; i < employeeList.length; i++){ %>
+		<tr>
+			<td><%= employeeList[i].id %></td>
+			<td><%= employeeList[i].username %></td>
+			<td><%= employeeList[i].password %></td>
+			<td><%= employeeList[i].type %></td>
+			<td><%= employeeList[i].gender %></td>
+			<td><%= employeeList[i].phone %></td>
+		</tr>
+		<% } %>
+	</table>
+
+</body>
+
+</html>
+<script>
+$(document).ready(function(){
+    $('tbody').on('click', 'a', function(){
+        var value_id = $(this).closest('tr').find('td').first().text();
+        document.getElementById("delete_button").value = value_id;
+    });
+});
+function search() {
+  var input = document.getElementById("search");
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById("table");
+  var tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++){
+    td1 = tr[i].getElementsByTagName("td")[0];
+    td2 = tr[i].getElementsByTagName("td")[1];
+    td3 = tr[i].getElementsByTagName("td")[2];
+    if (td1 || td2) {
+      var txtValue1 = td1.textContent || td1.innerText;
+      var txtValue2 = td2.textContent || td2.innerText;
+      var txtValue3 = td3.textContent || td3.innerText;
+      if (txtValue1.toUpperCase().indexOf(filter) > -1 || (txtValue2.toUpperCase().indexOf(filter) > -1)|| (txtValue3.toUpperCase().indexOf(filter) > -1)) {
+          tr[i].style.display = "";
+      } else {
+          tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

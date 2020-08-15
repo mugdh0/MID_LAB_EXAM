@@ -16,6 +16,12 @@ router.get('/', function(req, res){
 	res.render('admin',{uname: req.session.username});
 });
 
+router.get('/search', function(req, res){
+	userModel.getAllemployee(function(results){
+		res.render('search', { employeeList : results, uname: req.session.username});
+	});
+});
+
 router.get('/allemployee', function(req, res){
   userModel.getAllemployee(function(results){
 		res.render('allemployee', { employeeList : results, uname: req.session.username});
