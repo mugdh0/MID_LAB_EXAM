@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>User List page</title>
 	<link rel="stylesheet" type="text/css" href="abc/style.css">
 
 </head>
+
 <body>
 
 	<a href="/admin">Back</a>|
-	<a href="/logout">Logout</a>
+	<a href="/login/logout">Logout</a>
 
 
 	<h3>User List</h3>
@@ -18,6 +20,8 @@
 			<th>USERNAME</th>
 			<th>PASSWORD</th>
 			<th>designation</th>
+			<th>gender</th>
+			<th>phone</th>
 			<th>Action</th>
 		</tr>
 
@@ -27,10 +31,13 @@
 			<td><%= employeeList[i].username %></td>
 			<td><%= employeeList[i].password %></td>
 			<td><%= employeeList[i].type %></td>
+			<td><%= employeeList[i].gender %></td>
+			<td><%= employeeList[i].phone %></td>
 			<td><a href="/user/edit/<%= employeeList[i].id %>">EDIT</a> | <a href="/user/delete/<%= employeeList[i].id %>"> DELETE </a></td>
 		</tr>
 		<% } %>
 	</table>
 
 </body>
+
 </html>
