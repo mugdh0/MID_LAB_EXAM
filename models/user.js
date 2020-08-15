@@ -77,6 +77,16 @@ module.exports ={
 			}
 		});
 	},
+	updateemp: function(user, callback){
+		var sql = "update user set username=?, password=?, type=?, gender=?, phone=? where id=?";
+		db.execute(sql, [user.uname, user.password, user.type, user.gender, user.phone , user.id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 
 	delete: function(id, callback){
 		var sql = "delete from user where id=?";

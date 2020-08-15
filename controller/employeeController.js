@@ -23,7 +23,34 @@ router.get('/myprofile/:uname', function(req, res){
 	});
 
 });
+router.get('/updateemp/:uname', function(req, res){
 
+	userModel.get(req.params.uname, function(result){
+		res.render('updateemp', {user: result});
+	});
+
+});
+
+router.post('/updateemp/:id', function(req, res){
+  console.log(req.params.id)
+  var user = {
+    id: req.params.id,
+		uname 		: req.body.uname,
+		password	: req.body.password,
+		type		  : req.body.type,
+    gender    : req.body.gender,
+    phone     : req.body.phone
+	}
+
+  userModel.updateemp(user, function(status){
+		if(status){
+			res.redirect('/employee');
+		}else{
+			res.redirect('/login');
+		}
+	});
+
+});
 
 
 module.exports = router;
