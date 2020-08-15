@@ -68,8 +68,8 @@ module.exports ={
 	},
 
 	update: function(user, callback){
-		var sql = "update user set username=?, password=?, type=? where id=?";
-		db.execute(sql, [user.uname, user.password, user.type, user.id], function(status){
+		var sql = "update user set username=?, password=?, type=?, gender=?, phone=? where id=?";
+		db.execute(sql, [user.uname, user.password, user.type, user.gender, user.phone , user.id], function(status){
 			if(status){
 				callback(true);
 			}else{

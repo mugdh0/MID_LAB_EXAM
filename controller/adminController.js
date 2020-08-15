@@ -71,4 +71,32 @@ router.post('/delete/:id', function(req, res){
 
 });
 
+router.get('/update/:id', function(req, res){
+
+	userModel.gets(req.params.id, function(result){
+		res.render('update', {user: result});
+	});
+
+});
+router.post('/update/:id', function(req, res){
+  console.log(req.params.id)
+  var user = {
+    id: req.params.id,
+		uname 		: req.body.uname,
+		password	: req.body.password,
+		type		  : req.body.type,
+    gender    : req.body.gender,
+    phone     : req.body.phone
+	}
+
+  userModel.update(user, function(status){
+		if(status){
+			res.redirect('/admin/allemployee');
+		}else{
+			res.redirect('/admin');
+		}
+	});
+
+});
+
 module.exports = router;

@@ -33,7 +33,7 @@
 			<td><%= employeeList[i].type %></td>
 			<td><%= employeeList[i].gender %></td>
 			<td><%= employeeList[i].phone %></td>
-			<td><a href="/admin/edit/<%= employeeList[i].id %>">EDIT</a> | <a href="/admin/delete/<%= employeeList[i].id %>"> DELETE </a></td>
+			<td><a href="/admin/update/<%= employeeList[i].id %>">EDIT</a> | <a href="/admin/delete/<%= employeeList[i].id %>"> DELETE </a></td>
 		</tr>
 		<% } %>
 	</table>
