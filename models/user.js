@@ -23,6 +23,16 @@ module.exports ={
 			}
 		});
 	},
+	getAllemployee: function(callback){
+		var sql = "select * from user where type='employee'";
+		db.getResults(sql, null,  function(result){
+			if(result.length > 0){
+				callback(result);
+			}else{
+				callback([]);
+			}
+		});
+	},
 
 	validate: function(user, callback){
 		var sql = "select * from user where username=? and password=?";
